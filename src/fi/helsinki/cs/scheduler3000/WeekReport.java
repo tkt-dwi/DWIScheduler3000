@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import fi.helsinki.cs.scheduler3000.Weekday.Day;
+import java.util.Collections;
 
 public class WeekReport extends Report {
 
@@ -21,7 +22,8 @@ public class WeekReport extends Report {
 	public String toString() {
 		
 		if (this.options.containsKey("days")){
-			ArrayList<Weekday.Day> days = (ArrayList<Day>)this.options.get("days");			
+			ArrayList<Weekday.Day> days = (ArrayList<Day>)this.options.get("days");
+                        Collections.sort(days);
 			String[][] res = new String[days.size() + 1][7]; // +1 for header row
 
 			res[0][0] = "\t";

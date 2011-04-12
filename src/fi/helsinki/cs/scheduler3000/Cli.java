@@ -17,6 +17,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 
 import fi.helsinki.cs.scheduler3000.Weekday.Day;
+import java.util.Collections;
 
 public class Cli {
 
@@ -332,8 +333,10 @@ public class Cli {
 	}
 
 	private static void printDates(Schedule schedule) {
+                ArrayList<Weekday.Day> days = new ArrayList<Weekday.Day>(schedule.getSchedule().keySet());
+		Collections.sort(days);
 		System.out.print("Dates are: ");
-		for (Day d : schedule.getSchedule().keySet()){
+		for (Day d : days){
 			System.out.print(Weekday.enumToIntMap.get(d));
 			System.out.print(" - ");
 			System.out.print(Weekday.longNameMap.get(d));

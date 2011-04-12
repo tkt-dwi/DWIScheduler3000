@@ -5,6 +5,8 @@ package fi.helsinki.cs.scheduler3000;
  */
 
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Report {
@@ -21,8 +23,9 @@ public class Report {
 	// FIXME: should this be elsewhere?
 	public String toString(){
 		String res = "";
-		
-		for (Weekday.Day day : schedule.getSchedule().keySet()){
+                ArrayList<Weekday.Day> days = new ArrayList<Weekday.Day>(schedule.getSchedule().keySet());
+		Collections.sort(days);
+		for (Weekday.Day day : days){
 			res += day + ":\n";
 			res += "----\n";
 			for (Event event : schedule.getSchedule().get(day)){

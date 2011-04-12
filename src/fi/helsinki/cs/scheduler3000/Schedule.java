@@ -16,7 +16,7 @@ public class Schedule implements Serializable {
 	
     private String period;
     private HashMap<Day, ArrayList<Event>> schedule;
-
+    
     // CONSTRUCTORS
     
     // this constructor is solely for mock objects to use, hence protected
