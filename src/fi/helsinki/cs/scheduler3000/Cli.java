@@ -100,7 +100,7 @@ public class Cli {
 				return true; // day ok, exit!
 			}
 
-			System.out.println("Muista pyhittää lepopäivä!");
+                        System.out.println("Sorry, but \""+day+"\" is not a valid number for date");
 
 
 		} catch (NumberFormatException e) {	
