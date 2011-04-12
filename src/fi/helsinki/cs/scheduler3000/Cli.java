@@ -96,7 +96,7 @@ public class Cli {
 
 			day = Integer.parseInt(in);
 			// check if day is indeed a valid number
-			if (day > 0 && day < 7){
+			if (day > 0 && day < 8){
 				return true; // day ok, exit!
 			}
 
@@ -208,7 +208,7 @@ public class Cli {
 		printPrompt();
 		String period = input.nextLine();
 
-		System.out.println("Give dates you want to include in the scedule");
+		/*System.out.println("Give dates you want to include in the scedule");
 		System.out.println("Stop giving the dates by entering \""+endCommand+"\"");
 		System.out.println("One at a time, please");
 
@@ -227,12 +227,12 @@ public class Cli {
 				}
 			}
 
-		} while (true);
+		} while (true);*/
 
 		System.out.print("Creating schedule...");
 
 		ArrayList<Day> days = new ArrayList<Day>();
-		for(Integer d : dates){
+		for(int d = 1; d < 8; d++){
 			days.add(Weekday.intToEnumMap.get(d));
 		}
 
@@ -447,7 +447,7 @@ public class Cli {
 	private static void printReportDialogToScreenDialog() {
 		Report report = printReportDialog();
 		if (report != null){
-			System.out.println(printReportDialog());
+			System.out.println(report);
 		}
 		
 	}
