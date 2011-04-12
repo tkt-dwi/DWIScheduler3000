@@ -263,7 +263,11 @@ public class Cli {
 		}
 		
 		try {
-			schedule.setSchedule( (Schedule) objectInput.readObject()); // have to cast the object
+                        Schedule newSchedcule = (Schedule) objectInput.readObject();
+                        if(schedule != null)
+                            schedule.setSchedule(newSchedcule); // have to cast the object
+                        else
+                            schedule = newSchedcule;
 			return true;
 		} catch (IOException e) {
 			System.out.println("Cannot read \"" + filename + "\" from ObjectInputStream");
