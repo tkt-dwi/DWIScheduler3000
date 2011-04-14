@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import fi.helsinki.cs.scheduler3000.Weekday.Day;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class WeekReport extends Report {
@@ -24,7 +25,7 @@ public class WeekReport extends Report {
 		if (this.options.containsKey("days")){
 			ArrayList<Weekday.Day> days = (ArrayList<Day>)this.options.get("days");
                         Collections.sort(days);
-			String[][] res = new String[days.size() + 1][7]; // +1 for header row
+			String[][] res = new String[days.size() + 1][Event.VALID_START_TIMES.length+1]; // +1 for header row
 
 			res[0][0] = "\t";
 			
@@ -57,16 +58,19 @@ public class WeekReport extends Report {
 					if (event.getLocation() != null) { 
 					  entry = event.getLocation()+"\t";
 					}
-					
-					if (event.getStartTime().equals("08"))     { res[i][1] = entry; } 
+
+                                        int index = getIndexForRes(event);
+                                        if(index > 0)
+                                            res[i][index] = entry;
+					/*if (event.getStartTime().equals("08"))     { res[i][1] = entry; }
 					else if(event.getStartTime().equals("10")) { res[i][2] = entry; } 
 					else if(event.getStartTime().equals("12")) { res[i][3] = entry;	} 
 					else if(event.getStartTime().equals("14")) { res[i][4] = entry; } 
 					else if(event.getStartTime().equals("16")) { res[i][5] = entry; } 
-					else if(event.getStartTime().equals("18")) { res[i][6] = entry; }
+					else if(event.getStartTime().equals("18")) { res[i][6] = entry; }*/
 				
 					// fill up with empties
-					for (int x = 1; x < 7; x++) {
+					for (int x = 1; x < res[i].length; x++) {
 						if (res[i][x] == null){
 							res[i][x] = "\t";
 						}
@@ -89,5 +93,10 @@ public class WeekReport extends Report {
 		}
 		return null;
 	}
+
+        private int getIndexForRes(Event event){
+            ArrayList<String> validTimes = new ArrayList<String>(Arrays.asList(Event.VALID_START_TIMES));
+            return validTimes.indexOf(event.getStartTime()) + 1;
+        }
 	
 }

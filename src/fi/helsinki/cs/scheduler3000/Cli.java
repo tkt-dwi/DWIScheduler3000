@@ -144,12 +144,13 @@ public class Cli {
                 printDates();
                 printPrompt();
                 eventDayTemp = input.nextLine();
-                if(!checkDate(eventDayTemp)){
-                    continue;
-                }
                 if (eventDayTemp.equals(endCommand)) {
                     return;
                 }
+                if(!checkDate(eventDayTemp)){
+                    continue;
+                }
+                
 
                 System.out.println("What is the start time?");
                 printPrompt();

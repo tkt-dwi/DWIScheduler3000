@@ -1,6 +1,7 @@
 package fi.helsinki.cs.scheduler3000;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * @author Team TA's
@@ -10,8 +11,8 @@ import java.io.Serializable;
 public class Event implements Serializable{
 
 	// FIXME
-	public static final String[] VALID_START_TIMES = {"08", "10", "12", "14", "16", "18" };
-	public static final String[] VALID_END_TIMES = {"10", "12", "14", "16", "18", "20" };
+	public static final String[] VALID_START_TIMES = generateValidTimes();
+	public static final String[] VALID_END_TIMES = generateValidTimes();
 	private String startTime;
 	private String endTime;
 	private String location;
@@ -101,4 +102,19 @@ public class Event implements Serializable{
 		}
 		return false;
 	}
+
+        private static String[] generateValidTimes(){
+            ArrayList<String> times = new ArrayList<String>();
+            for (int i = 8; i < 21; i++){
+                String hour = ""+i;
+                String halfHour = i+":30";
+                if(i < 10){
+                    hour = "0"+hour;
+                    halfHour = "0"+halfHour;
+                }
+                times.add(hour);
+                times.add(halfHour);
+            }
+            return times.toArray(new String [1]);
+        }
 }

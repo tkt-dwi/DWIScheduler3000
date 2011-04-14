@@ -54,7 +54,7 @@ public class EventTest extends TestCase{
 		event.setStartTime("10");
 		assertEquals("10", event.getStartTime());
 		try{
-			event.setStartTime("09");	
+			event.setStartTime("9");
 			fail("Expecting IllegalArgumentException");
 		}catch(IllegalArgumentException r){
 			// Everything went better than expected
