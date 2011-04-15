@@ -77,6 +77,10 @@ public class Cli {
                 case 'q':
                     System.exit(0);
                     break;
+                    
+                case 'c':
+                	new CSV().writeCSV(schedule);
+                	break;
 
                 default:
                     System.out.println("Don't know what that command is");
@@ -319,6 +323,7 @@ public class Cli {
             System.out.println("[S]ave schedule to file");
             System.out.println("[P]rint a report on screen");
             System.out.println("Print a report to [F]ile");
+            System.out.println("Save schedule as [C]SV file");
         }
         System.out.println("[Q]uit");
     }
@@ -526,3 +531,4 @@ public class Cli {
         System.out.println("Schedule saved as \"" + filename + "\"");
     }
 }
+
