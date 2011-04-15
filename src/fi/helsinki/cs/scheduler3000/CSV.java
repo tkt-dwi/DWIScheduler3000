@@ -84,14 +84,21 @@ public class CSV
 			{
 				if(CSVgrid[i][0] != null)
 					writer.write(CSVgrid[i][0].replace("\n", "\\n"));
+					System.out.print(CSVgrid[i][0].replace("\n", "\\n"));
 				for(int j=1;j<CSVcolumns;j++)
 				{
 					writer.write(',');
+					System.out.print(',');
 					if(CSVgrid[i][j] != null)
+					{
 						writer.write(CSVgrid[i][j].replace("\n", "\\n"));
+						System.out.print(CSVgrid[i][j].replace("\n", "\\n"));
+					}
 				}
 				writer.write('\n');
+				System.out.print('\n');
 			}
+			writer.close();
 		} catch (Exception exc)
 		{
 			System.err.println("Could not write CSV data");
