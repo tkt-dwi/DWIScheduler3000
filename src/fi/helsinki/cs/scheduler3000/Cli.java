@@ -28,6 +28,22 @@ public class Cli {
 
     public static void main(String[] args) {
 
+        System.out.println("\033[2J\n");
+
+        System.out.println("***************************************");
+        System.out.println("****    ****  ********  ***  **********");
+        System.out.println("**** **  ***  ********  ***  **********");
+        System.out.println("**** *** ****  **  **  ****  **********");
+        System.out.println("**** *** ****  *    *  ****  **** *****");
+        System.out.println("**** **  *****   **   *****  ***   ****");
+        System.out.println("****    ******* **** ******  **** *****");
+        System.out.println("***************************************");
+        System.out.println();
+        System.out.println("PUUKKO PUOLUKKAPUUROSSA 3001");
+        System.out.println("(more friendlier known as PUPU)");
+        System.out.println();
+
+
         Character foo;
 
         do {
