@@ -14,11 +14,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
+import java.awt.*;
+import java.net.*;
+import javax.swing.*;
+
+
 
 import fi.helsinki.cs.scheduler3000.Weekday.Day;
 import java.util.Collections;
 
-public class Cli {
+public class Cli implements Runnable{
 
     private static Scanner input = new Scanner(System.in);
     private static Schedule schedule = null;
@@ -26,7 +31,20 @@ public class Cli {
     private static ObjectOutputStream objectOutput;
     private static ObjectInputStream objectInput;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MalformedURLException {
+
+        //new GIF
+        URL url = new URL("http://www.cs.helsinki.fi/u/koheikki/nymanfaster.gif");
+        Icon icon = new ImageIcon(url);
+        JLabel label = new JLabel(icon);
+ 
+        JFrame f = new JFrame("Processing...");
+        f.getContentPane().add(label);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.pack();
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
+
 
         System.out.println("\033[2J\n");
 
@@ -40,7 +58,7 @@ public class Cli {
         System.out.println("***************************************");
         System.out.println();
         System.out.println("PUUKKO PUOLUKKAPUUROSSA 3001");
-        System.out.println("(more friendlier known as PUPU)");
+        System.out.println("(more friendlier known as PUPU 3001)");
         System.out.println();
 
 
@@ -106,6 +124,8 @@ public class Cli {
         } while (true);
 
     }
+
+    
 
     private static boolean checkDate(String in) {
         Integer day = null;
@@ -545,6 +565,10 @@ public class Cli {
             }
         }
         System.out.println("Schedule saved as \"" + filename + "\"");
+    }
+
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
 
